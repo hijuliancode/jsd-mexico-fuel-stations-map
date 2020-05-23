@@ -37,11 +37,18 @@ class UI {
     datos.forEach(dato => {
       const { latitude, longitude, calle, regular, premium } = dato
 
+      // Crear popUP
+      const opcionesPopup = L.popup().setContent(`
+        <p>Calle: ${calle}<p>
+        <p><b>Regular</b>: $ ${regular}<p>
+        <p><b>Premium</b>: $ ${premium}<p>
+      `);
+
       // Agregar PIN
       const marker = new L.marker([
         parseFloat(latitude),
         parseFloat(longitude)
-      ])
+      ]).bindPopup(opcionesPopup)
       // Agregar el pin al grupo de markers
       this.markers.addLayer(marker)
     })
