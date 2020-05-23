@@ -53,7 +53,6 @@ class UI {
       this.markers.addLayer(marker)
     })
     this.markers.addTo(this.mapa)
-    console.log(datos)
   }
   obtenerSugerencias(busqueda) {
     this.api.obtenerDatos()
@@ -66,8 +65,11 @@ class UI {
       })
   }
   // Filtrar las sugerencias en base al input
-  filtrarSegerencia(resultado, busqueda) {
+  filtrarSegerencia(resultados, busqueda) {
     // filtrar con .filter
+    const filtro = resultados.filter(resultado => resultado.calle.indexOf(busqueda) !== -1)
+    this.mostrarPines(filtro)
+    
     // mostrar los pines
   }
 }
