@@ -55,4 +55,19 @@ class UI {
     this.markers.addTo(this.mapa)
     console.log(datos)
   }
+  obtenerSugerencias(busqueda) {
+    this.api.obtenerDatos()
+      .then(datos => {
+        // Obtener los datos
+        const resultados = datos.respuestaJSON.results;
+
+        // Enviar el JSON y la búsqueda para obtener el filtrado
+        this.filtrarSegerencia(resultados, busqueda)
+      })
+  }
+  // Filtrar las sugerencias en base al input
+  filtrarSegerencia(resultado, busqueda) {
+    // filtrar con .filter
+    // mostrar los pines
+  }
 }
